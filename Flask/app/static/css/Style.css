@@ -106,7 +106,17 @@ a:hover{
     align-items: center; 
     height: 100vh;
     color: white;
+    flex-direction: column;
 }
 #containerDiario h1{
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+#containerDiario a{
+    color: white;
+    background: #cf7717;
+    padding: 10px;
+}
+#containerDiario a:hover{
+    background: #9b560d;
+  
 }

@@ -8,7 +8,8 @@
 </head>
 <body>
     <div id="containerDiario">
-        <h1>O RA informado é: {{ra}}</h1>
+        <h1>O RA informado é: {{ ra or '1' }}</h1>
+        <a href="{{ url_for('listar_alunos')}}">Listar Alunos</a>
     </div>
     
 </body>
