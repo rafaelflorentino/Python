@@ -1,7 +1,14 @@
-#importação do opencv-python
+# ! pip install opencv-python
+# ! pip install mediapipe
+# ! pip freeze >> Requirements.txt
+
+# importação do opencv-python
 import cv2
-import mediapipe as mp # importação do mediapipe para usar o facemesh
-#criar uma variável para camera
+
+# importação do mediapipe para usar o facemesh
+import mediapipe as mp 
+
+# criar uma variável para camera
 cap = cv2.VideoCapture(0)
 # usando uma solução de desenho
 mp_drawing = mp.solutions.drawing_utils
