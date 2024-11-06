@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Página de Cadastro</h1>
+    <hr>
+    <form action="{{ url_for('cadastro') }}" method="POST">
+        <table>
+            <tr>
+                <td>Nome</td>
+                <td><input type="text" name="nome"></td>
+            </tr>
+            <tr>
+                <td>Ano</td>
+                <td><input type="text" name="ano"></td>
+            </tr>
+            <tr>
+                <td>Populacao</td>
+                <td><input type="text" name="populacao"></td>
+            </tr>
+            <tr>
+                <td>PIB</td>
+                <td><input type="text" name="pib"></td>
+            </tr>
+            <tr>
+                <td>Lixo Produzido</td>
+                <td><input type="text" name="totalLixo"></td>
+            </tr>
+            <tr>
+                <td>Lixo Reciclado</td>
+                <td><input type="text" name="totalReciclado"></td>
+            </tr>
+        </table><br>
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar</title>
+</head>
+<body>
+    <h1>Listar Paises</h1>
+    <hr>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Nome</td>
+            <td>Ano</td>
+            <td>População</td>
+            <td>PIB</td>
+            <td>Lixo Produzido</td>
+            <td>Lixo Reciclado</td>
+            <td>Excluir</td>
+            <td>Atualizar</td>
+        </tr>
+        {% for pais in paises %}
+        <tr>
+            <td>{{pais._id}}</td>
+            <td>{{pais.nome}}</td>
+            <td>{{pais.ano}}</td>
+            <td>{{pais.populacao}}</td>
+            <td>{{pais.pib}}</td>
+            <td>{{pais.totalLixo}}</td>
+            <td>{{pais.totalReciclado}}</td>
+            <td><a href="/excluir/{{ pais._id }}">Excluir</a></td>
+            <td><a href="/atualizar/{{ pais._id }}">Atualizar</a></td>
+        </tr>  
+        {% endfor %}      
+    </table>
+    <a href="/index">Voltar</a>
+</body>
+</html>
