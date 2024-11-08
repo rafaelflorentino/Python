@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar</title>
+</head>
+<body>
+    <h1>Atualizar Pais</h1>
+    <hr>
+    <form action="" method="POST">
+        <table>
+            <tr>
+                <td>Nome</td>
+                <td><input type="text" name="nome" value={{pais.nome}}></td>
+            </tr>
+            <tr>
+                <td>Ano</td>
+                <td><input type="text" name="ano" value={{pais.ano}}></td>
+            </tr>
+            <tr>
+                <td>Populacao</td>
+                <td><input type="text" name="populacao" value={{pais.populacao}}></td>
+            </tr>
+            <tr>
+                <td>PIB</td>
+                <td><input type="text" name="pib" value={{pais.pib}}></td>
+            </tr>
+            <tr>
+                <td>Lixo Produzido</td>
+                <td><input type="text" name="totalLixo" value={{pais.totalLixo}}></td>
+            </tr>
+            <tr>
+                <td>Lixo Reciclado</td>
+                <td><input type="text" name="totalReciclado" value={{pais.totalReciclado}}></td>
+            </tr>
+        </table><br>
+        <input type="submit" value="Atualizar">
+        <a href="/listar">Voltar</a>
+    </form>
+</body>
+</html>

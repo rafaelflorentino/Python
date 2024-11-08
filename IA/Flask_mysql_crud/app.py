@@ -2,6 +2,7 @@
 # ! pip install pymysql
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
+import math
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/pais'
@@ -30,6 +31,26 @@ class Pais(db.Model):
 with app.app_context():
     db.create_all()  
 
+@app.route("/listar")
+def listar():
+    # Configurações de paginação
+    ITEMS_PER_PAGE = 10
+    page = request.args.get('page', 1, type=int)  # Página atual (padrão: 1)
+    
+    # Consulta total de itens
+    total_items = Pais.query.count()
+    total_pages = math.ceil(total_items / ITEMS_PER_PAGE)
+    
+    # Consulta para obter apenas os itens da página atual
+    paises = (Pais.query
+              .order_by(Pais.nome)  # Ordenação opcional
+              .offset((page - 1) * ITEMS_PER_PAGE)
+              .limit(ITEMS_PER_PAGE)
+              .all())
+
+    return render_template("listar.html", paises=paises, page=page, total_pages=total_pages)
+
+
 @app.route("/")
 @app.route("/index")
 def index():
@@ -57,20 +78,38 @@ def cadastro():
             
     return redirect(url_for("index"))
 
-@app.route("/listar")
-def listar():
-    paises = Pais.query.all()
-    return render_template("listar.html", paises=paises)
+# @app.route("/listar")
+# def listar():
+#     paises = Pais.query.all()
+#     return render_template("listar.html", paises=paises)
 
 @app.route("/excluir/<int:id>")
 def excluir(id):
+    # Obter o país a ser excluído
     pais = Pais.query.filter_by(_id=id).first()
     
-    db.session.delete(pais)
-    db.session.commit()
+    # Excluir o país se existir
+    if pais:
+        db.session.delete(pais)
+        db.session.commit()
     
-    paises = Pais.query.all()
-    return render_template("listar.html", paises=paises)
+    # Configurações de paginação
+    ITEMS_PER_PAGE = 10
+    page = request.args.get('page', 1, type=int)  # Página atual, padrão 1
+    
+    # Atualizar o total de itens e calcular o número de páginas
+    total_items = Pais.query.count()
+    total_pages = math.ceil(total_items / ITEMS_PER_PAGE)
+    
+    # Consultar apenas os itens da página atual
+    paises = (Pais.query
+              .order_by(Pais.nome)  # Ordenação opcional
+              .offset((page - 1) * ITEMS_PER_PAGE)
+              .limit(ITEMS_PER_PAGE)
+              .all())
+    
+    # Renderizar a página com os dados atualizados
+    return render_template("listar.html", paises=paises, page=page, total_pages=total_pages)
 
 @app.route("/atualizar/<int:id>", methods=['GET', 'POST'])
 def atualizar(id):
