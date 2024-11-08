@@ -136,6 +136,10 @@ def atualizar(id):
                 return redirect(url_for("listar"))
             
     return render_template("atualizar.html", pais=pais)
+
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html") 
             
 if __name__ == '__main__':
     app.run(debug=True)
