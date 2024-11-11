@@ -54,7 +54,7 @@ def listar():
 @app.route("/")
 @app.route("/index")
 def index():
-    paises = Pais.query.all()  
+    paises = Pais.query.order_by(Pais.nome).all()  # Ordena os países em ordem alfabética
     return render_template("index.html", paises=paises) 
 
 @app.route("/cadastrar")
