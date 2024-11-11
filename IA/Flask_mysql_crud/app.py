@@ -78,11 +78,6 @@ def cadastro():
             
     return redirect(url_for("index"))
 
-# @app.route("/listar")
-# def listar():
-#     paises = Pais.query.all()
-#     return render_template("listar.html", paises=paises)
-
 @app.route("/excluir/<int:id>")
 def excluir(id):
     # Obter o país a ser excluído
