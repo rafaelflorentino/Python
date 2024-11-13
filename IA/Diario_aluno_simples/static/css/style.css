@@ -1,0 +1,18 @@
+body{
+    background-color:#decdcd;
+}
+h2,label{
+    color:#151414;
+}
+#botao{
+    color:blue;
+}
+.mensagem{
+    width: 80px;
+    height: 15px;
+    background-color: brown;
+    border:1px solid rgb(227, 215, 215);
+    margin-left: 100px;
+    margin-top: 9px;
+    color:#decdcd;
+}
